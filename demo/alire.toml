@@ -18,4 +18,4 @@ wordlist = { path='..' }
 '*' = 'development'
 
 [configuration.values]
-# wordlist.Logging = false
+wordlist.Logging = true

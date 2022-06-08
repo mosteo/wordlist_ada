@@ -1,6 +1,6 @@
 name = "wordlist"
-description = "Shiny new project"
-version = "0.1.0-dev"
+description = "An English word list"
+version = "0.1.0"
 
 authors = ["Alejandro R. Mosteo"]
 maintainers = ["Alejandro R. Mosteo <alejandro@mosteo.com>"]
@@ -12,4 +12,4 @@ ada_toml = "~0.3.0"
 resources = "~0.1.0"
 
 [configuration.variables]
-Logging = { type = "Boolean", default = true }
+Logging = { type = "Boolean", default = false }
