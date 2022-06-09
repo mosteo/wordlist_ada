@@ -64,7 +64,9 @@ begin
    declare
       Table : constant TOML.TOML_Value :=
                 TOML.File_IO.Load_File
-                  (My_Resources.Resource_Path & "wordlist.json").Value;
+                  (My_Resources.Resource_Path
+                   & AAA.Strings.To_Lower_Case (Wordlist_Config.Wordset'Image)
+                   & ".toml").Value;
 
       List  : constant TOML.TOML_Value := Table.Get ("wordlist");
    begin
