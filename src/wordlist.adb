@@ -1,3 +1,4 @@
+with Ada.Numerics.Discrete_Random;
 with Ada.Text_IO; use Ada.Text_IO;
 
 with Resources;
@@ -7,6 +8,10 @@ with TOML.File_IO;
 with Wordlist_Config;
 
 package body Wordlist is
+
+   package Intrnd is new Ada.Numerics.Discrete_Random (Integer);
+
+   Generator : Intrnd.Generator;
 
    ---------
    -- Log --
@@ -30,11 +35,24 @@ package body Wordlist is
 
    function All_Words return Word_Set is (Words);
 
+   -----------------
+   -- Random_Word --
+   -----------------
+
+   function Random_Word (This : Word_Vector) return String is
+   begin
+      return This
+        (Intrnd.Random
+           (Generator,
+            This.First_Index,
+            This.Last_Index));
+   end Random_Word;
+
    ---------------
    -- To_Vector --
    ---------------
 
-   function To_Vector (This : Word_Set) return Word_Vector is
+   function To_Vector (This : Word_Set'Class) return Word_Vector is
    begin
       return Result : Word_Vector do
          for Word of This loop
@@ -59,6 +77,8 @@ package body Wordlist is
    end With_Length;
 
 begin
+   Intrnd.Reset (Generator);
+
    Log ("Loading words from " & My_Resources.Resource_Path & "wordlist.json");
 
    declare

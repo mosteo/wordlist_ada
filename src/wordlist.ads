@@ -4,7 +4,7 @@ package Wordlist with Elaborate_Body is
 
    type Word_Set is new AAA.Strings.Set with null record;
 
-   subtype Word_Vector is AAA.Strings.Vector;
+   type Word_Vector is new AAA.Strings.Vector with null record;
 
    --  Useful things
 
@@ -13,6 +13,9 @@ package Wordlist with Elaborate_Body is
    function With_Length (Length : Positive) return Word_Set;
 
    not overriding
-   function To_Vector (This : Word_Set) return Word_Vector;
+   function To_Vector (This : Word_Set'Class) return Word_Vector;
+
+   not overriding
+   function Random_Word (This : Word_Vector) return String;
 
 end Wordlist;
