@@ -79,7 +79,9 @@ package body Wordlist is
 begin
    Intrnd.Reset (Generator);
 
-   Log ("Loading words from " & My_Resources.Resource_Path & "wordlist.json");
+   Log ("Loading words from "
+        & My_Resources.Resource_Path
+        & AAA.Strings.To_Lower_Case (Wordlist_Config.Wordset'Image) & ".toml");
 
    declare
       Table : constant TOML.TOML_Value :=
