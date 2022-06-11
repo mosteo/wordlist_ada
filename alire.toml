@@ -18,3 +18,28 @@ resources = "~0.1.0"
 [configuration.variables]
 Logging = { type = "Boolean", default = false }
 Wordset = { type = "Enum", values = ["small", "large"], default = "large" }
+
+# STEP 7: use the original Wordle wordlist.
+# The problem with the default wordlist is that it contains too many obscure
+# words. On the other hand, the small wordlist available above in the
+# configuration variables, is so limited that most usual words are not found.
+#
+# If you look into the ./wordlist_ada/share/wordlist folder, you'll see a third
+# wordlist in the file "wordle.toml". We could edit the sources to hardcode
+# that file, but instead, we will add this third possibility via the crate
+# configuration in this very same manifest.
+#
+# TODO: Edit the "Wordset" entry in the [configuration.variables] table in this
+# file, add "wordle" as a third value in the "values" array.
+#
+# TODO: Edit the root manifest at ./wordle_ada/alire.toml, to select the
+# "wordle" wordset. To do so, add a new table "[configuration.values]" to the
+# manifest, with an entry 'Wordset = "wordle"'.
+#
+# TODO: `alr run` the game again and verify that the number of loaded words is
+# now smaller. You can also inspect the generated configuration file found at
+#   ./wordle_ada/alire/cache/pins/wordlist_ada/config/wordlist_config.ads
+# Finally, you can inspect the source code of wordlist.adb to check how this
+# generated configuration is used during the loading of the words.
+#
+# THE END: this is the end of the Wordle tutorial exercise. Congratulations!
