@@ -17,4 +17,4 @@ resources = "~0.1.0"
 
 [configuration.variables]
 Logging = { type = "Boolean", default = false }
-Wordset = { type = "Enum", values = ["small", "large"], default = "large" }
+Wordset = { type = "Enum", values = ["small", "large", "wordle"], default = "large" }
